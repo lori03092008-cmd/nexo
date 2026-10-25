@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXO - Conecta con el mundo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f4f8;
+      color: #182230;
+    }
+    header {
+      background: #5638d5;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 34px; }
+    header p { margin-bottom: 0; }
+    main { max-width: 650px; margin: 25px auto; padding: 0 15px; }
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px #18223012;
+    }
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      padding: 12px;
+      border: 1px solid #d5d9e2;
+      border-radius: 10px;
+      font: inherit;
+    }
+    button {
+      border: 0;
+      background: #5638d5;
+      color: white;
+      padding: 11px 17px;
+      margin-top: 10px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .post { border-top: 1px solid #eee; padding-top: 14px; margin-top: 14px; }
+    .muted { color: #6c7585; font-size: 13px; }
+    footer { text-align: center; padding: 25px; color: #6c7585; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NEXO</h1>
+    <p>Tu mundo, tus conexiones.</p>
+  </header>
+  <main>
+    <section class="card">
+      <h2>¡Bienvenido a NEXO! 💜</h2>
+      <p>Un lugar para compartir ideas y conectar con otras personas.</p>
+    </section>
+    <section class="card">
+      <h2>¿Qué quieres compartir?</h2>
+      <textarea id="mensaje" placeholder="Escribe algo para tu comunidad..."></textarea>
+      <button onclick="publicar()">Publicar</button>
+      <div id="publicaciones"></div>
+    </section>
+  </main>
+  <footer>NEXO © 2026 · Conectando personas</footer>
+  <script>
+    function publicar() {
+      const caja = document.getElementById('mensaje');
+      const texto = caja.value.trim();
+      if (!texto) {
+        alert('Escribe algo antes de publicar.');
+        return;
+      }
+      const post = document.createElement('div');
+      post.className = 'post';
+      const contenido = document.createElement('p');
+      contenido.textContent = texto;
+      const fecha = document.createElement('p');
+      fecha.className = 'muted';
+      fecha.textContent = 'Publicado ahora';
+      post.appendChild(contenido);
+      post.appendChild(fecha);
+      document.getElementById('publicaciones').prepend(post);
+      caja.value = '';
+    }
+  </script>
+</body>
+</html>
